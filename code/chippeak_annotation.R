@@ -5,7 +5,7 @@ library(stringr)
 
 # functions
 # -----------------------------------------------------------------------------
-bed2gr <- function(filepath, header=F, sep='\t') { 
+bed2gr <- function(filepath, header=F, sep='\t', stranded=T) { 
   if (!file.exists(filepath) ) { 
     warning('File path does not exist') 
     return(NULL) 
@@ -16,6 +16,10 @@ bed2gr <- function(filepath, header=F, sep='\t') {
     dat$V5 <- rep(0)
     dat$V6 <- rep('*')
   }
+  if (stranded == FALSE) { 
+    dat$V6 <- rep('*') 
+  } 
+
   gr <- with(dat, GRanges(seqnames=V1, IRanges(start=V2, end=V3), strand=V6, name=V4) )
   return(gr) 
 }
