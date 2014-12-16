@@ -178,10 +178,5 @@ distanceToNearestTSS <- function(peaks, annotation, get = TRUE, featurepoint='ce
 }
 
 # -----------------------------------------------------------------------------
-# load data and work with it - this all should be removed 
-# convert annotations and peaks to ranged data
-gencode <- gtf2gr('~/annotations/gencode.v16.annotation.gtf')
-peaks <- bed2gr('~/proj/swi_snf/swi_snf_chipseq/combined/processed_data/summaries/beds/arid1b_alone.bed') 
 
-p <- annotatePeaks(peaks, gencode, window = 1000) 
-d <- distanceToNearestTSS(peaks = peaks, annotation = gencode, get = T) 
+
